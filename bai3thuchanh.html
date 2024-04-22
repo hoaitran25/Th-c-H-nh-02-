@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Giới Thiệu Các Loại Biểu Đồ</title>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+</head>
+<style>
+    body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: aliceblue;
+    color: #2F4F4F
+}
+
+.container {
+    max-width: 1500px;
+    margin: 90px auto;
+    padding: 0 50px;
+}
+
+h1, h2 {
+    text-align: center;
+}
+
+.chart {
+    margin-bottom: 50px;
+}
+
+.chart p {
+    text-align: center;
+}
+
+#scatterPlot, #barChart, #pieChart, #donutChart {
+    width: 100%;
+    height: 400px;
+}
+
+</style>
+<body>
+    <div class="container">
+        <h1>Giới Thiệu Các Loại Biểu Đồ</h1>
+        <div class="chart">
+            <h2>SCATTER PLOT</h2>
+            <p>
+                Scatter plot là loại biểu đồ trực quan hóa mối tương quan giữa 2 biến số dựa vào các tọa độ toán học. Mối tương quan này được biểu diễn dưới dạng các dấu chấm tròn đại diện cho 2 biến, với một biến phụ thuộc chạy cố định trên trục tung và một biến độc lập chạy cố định dựa vào trục hoành.
+                
+</p>
+            <div id="scatterPlot"></div>
+        
+        </div>
+        <div class="chart">
+            <h2>BAR CHART</h2>
+            <p>Bar chart là biểu đồ hình cột dùng để mô phỏng xu hướng thay đổi của các đối tượng theo thời gian hoặc để so sánh các số liệu/yếu tố của các đối tượng. Biểu đồ bar chart thường có hai trục: một trục là đối tượng/yếu tố cần được phân tích, trục còn lại là thông số của các đối tượng.</p>
+            <div id="barChart"></div>
+            
+        </div>
+        <div class="chart">
+            <h2>PIE CHART</h2>
+            <p>Pie chart là biểu đồ hình tròn dùng để so sánh các đối tượng ở mức tổng thể. Mỗi phần biểu diễn số liệu (thường ở dạng phần trăm) cho một đối tượng nào đó, tên các đối tượng với màu hoặc ký hiệu của chúng thường được liệt kê bên cạnh. </p>
+            <div id="pieChart"></div>
+            
+        </div>
+        <div class="chart">
+            <h2>DONUT CHART</h2>
+            <p> Donut pie chart là một biến thể của biểu đồ hình tròn (Pie chart), dạng này không khác gì biểu đồ tròn ngoại trừ phần rỗng bên trong. Donut pie chart giúp người đọc tập trung nhiều hơn vào chiều dài của các cung tròn thay vì chỉ tập trung vào so sánh tỷ lệ giữa các lát cắt như biểu đồ tròn. </p>
+            <div id="donutChart"></div>
+        </div>
+        <div class="chart">
+            <h2>BUBBLE CHART</h2>
+            <p> Bubble chart là một biểu đồ phổ biến để biểu thị dữ liệu có mối quan hệ giữa ba chiều: hoành độ, tung độ và kích cỡ. Bubble chart cho phép bạn giải thích mối quan hệ giữa hai biến và thể hiện cả mức độ sự liên quan giữa hai biến đó. Kích cỡ của các điểm trên biểu đồ có thể được sử dụng để biểu thị một giá trị thứ ba. </p>
+            <div id="bubbleChart"></div>
+            
+        </div>
+    </div>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+    
+    const scatterPlotData = [{
+        x: [1, 2, 3, 4, 5],
+        y: [2, 3, 5, 7, 11],
+        mode: 'markers',
+        type: 'scatter'
+    }];
+    
+    Plotly.newPlot('scatterPlot', scatterPlotData);
+    
+    
+    const barChartData = [{
+        x: ['A', 'B', 'C', 'D', 'E'],
+        y: [10, 20, 30, 40, 50],
+        type: 'bar'
+    }];
+    
+    Plotly.newPlot('barChart', barChartData);
+    
+   
+    const pieChartData = [{
+        values: [30, 40, 30],
+        labels: ['Red', 'Blue', 'Yellow'],
+        type: 'pie'
+    }];
+    
+    Plotly.newPlot('pieChart', pieChartData);
+    
+    
+    const donutChartData = [{     
+        values: [30, 40, 30],
+        labels: ['Red', 'Blue', 'Yellow'],
+        type: 'pie',
+        hole: 0.4
+    }];
+    const donutChartLayout = {
+                title: 'Biểu Đồ donutChart',
+                showlegend: false
+            };
+
+    
+    Plotly.newPlot('donutChart', donutChartData);
+});
+document.addEventListener("DOMContentLoaded", function() {
+            
+            const bubbleChartData = [{
+                x: [1, 2, 3, 4, 5],
+                y: [10, 20, 30, 40, 50],
+                marker: {
+                    size: [20, 30, 40, 50, 60]
+                },
+                mode: 'markers',
+                type: 'scatter'
+            }];
+            
+            const bubbleChartLayout = {
+                title: 'Biểu Đồ Bubble Chart',
+                showlegend: false
+
+            };
+            
+            Plotly.newPlot('bubbleChart', bubbleChartData, bubbleChartLayout);
+        });
+
+
+
+
+
+
+    </script>
+</body>
+</html>
